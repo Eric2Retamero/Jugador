@@ -31,8 +31,26 @@ public class Jugador {
     @Column
     protected String posicion;
 
+    @ManyToOne
+    private Equipo equipo; //union con tabla equipo, propiedad propietaria(N:1)
 
-    public Jugador(){}
+    public Equipo getEquipo() {
+        return equipo;
+    } //funcion para devolver el numero el cual esta associado el jugador con el equipo
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setEquipo(Equipo equipo) {
+        this.equipo = equipo;
+    } //funcion que asocia el equipo al jugador
+
+    public Jugador(){} //constructor vacio, si hay uno con parametros no hay que borrarlo sino se puede borrar
 
     public Jugador(String name, Date fechaNacimiento, int numCanastasTotal, int numAsistenciasTotales, int numRebotesTotales, String posicion){
         this.name=name;
@@ -41,6 +59,7 @@ public class Jugador {
         this.numAsistenciasTotales=numAsistenciasTotales;
         this.numRebotesTotales=numRebotesTotales;
         this.posicion=posicion;
+        this.equipo=equipo;
     }
 
     public String getName() {
@@ -101,6 +120,7 @@ public class Jugador {
                 ", numAsistenciasTotales=" + numAsistenciasTotales +
                 ", numRebotesTotales=" + numRebotesTotales +
                 ", posicion='" + posicion + '\'' +
+                ", equipo='" + equipo + '\'' +
                 '}';
     }
 }
