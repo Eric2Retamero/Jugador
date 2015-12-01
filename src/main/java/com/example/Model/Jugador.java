@@ -1,4 +1,6 @@
 package com.example.Model;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -31,7 +33,9 @@ public class Jugador {
     @Column
     protected String posicion;
 
+
     @ManyToOne
+    @JsonIgnore
     private Equipo equipo; //union con tabla equipo, propiedad propietaria(N:1)
 
     public Equipo getEquipo() {
